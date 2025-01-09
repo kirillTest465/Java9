@@ -23,26 +23,26 @@ public class Radio {
 
 // Метод для переключения на предыдущую станцию
 
-public void prev() {
-    if (CurrentRadioStationNumber == 0) {
-        CurrentRadioStationNumber = 9;     // Если текущая станция 0, переключаем на 9
-    } else {
-        CurrentRadioStationNumber--;      // Иначе просто уменьшаем номер станции
+    public void prev() {
+        if (CurrentRadioStationNumber == 0) {
+            CurrentRadioStationNumber = 9;     // Если текущая станция 0, переключаем на 9
+        } else {
+            CurrentRadioStationNumber--;      // Иначе просто уменьшаем номер станции
+        }
     }
-}
 
 // Метод сеттер для установки номера радиостанции с проверкой
 
-public void setCurrentRadioStationNumber (int station){
-    if (station >= 0 && station <= 9) {
-        this.CurrentRadioStationNumber = station; // Устанавливаем номер станции, если он допустим
-    } else {
-        System.out.println("Номер радиостанции должен быть в диапазоне от 0 до 9.");
+    public void setCurrentRadioStationNumber(int station) {
+        if (station >= 0 && station <= 9) {
+            this.CurrentRadioStationNumber = station; // Устанавливаем номер станции, если он допустим
+        } else {
+            System.out.println("Номер радиостанции должен быть в диапазоне от 0 до 9.");
+        }
     }
-}
 
-public void setSoundVolume (int volume) {
-        if (volume >= 0 && volume <=100) {
+    public void setSoundVolume(int volume) {
+        if (volume >= 0 && volume <= 100) {
             this.SoundVolume = volume; // Устанавливаем уровень громкости если он допустим
         } else {
             System.out.println("Уровень громкости должен быть в диапазоне от 0 до 100.");
@@ -52,24 +52,24 @@ public void setSoundVolume (int volume) {
 
     // Метод для увелечения громкости на 1
 
-public void increaseVolume() {
- if(SoundVolume < 100) {
-     SoundVolume++; // Увеличиваем громкость, если она меньше 100
- }
-}
-
-  // Метод для уменьшения громкости на 1
-
-public void decreaseVolume() {
-    if (SoundVolume > 0) {
-        SoundVolume--; // Уменьшаем громкость если она больше одного
+    public void increaseVolume() {
+        if (SoundVolume < 100) {
+            SoundVolume++; // Увеличиваем громкость, если она меньше 100
+        }
     }
-}
+
+    // Метод для уменьшения громкости на 1
+
+    public void decreaseVolume() {
+        if (SoundVolume > 0) {
+            SoundVolume--; // Уменьшаем громкость если она больше одного
+        }
+    }
 
 // Геттеры для полученя текущих значений
 
-public int getCurrentRadioStationNumber(){
-    return CurrentRadioStationNumber;
+    public int getCurrentRadioStationNumber() {
+        return CurrentRadioStationNumber;
     }
 
     public int getSoundVolume() {
