@@ -1,52 +1,61 @@
 public class Radio {
 
-    private int currentRadioStationNumber; // Номер текущей радиостанции
+    private int currentStation; //  текущей радиостанции
 
     private int soundVolume;  // Громкость звука
 
-    public Radio() {
-        this.currentRadioStationNumber = 0; // Начальная радиостанция
+    private int maxStation; // Максимальная станция
 
-        this.soundVolume = 0; // Начальный уровень громкости
+    public Radio() {
+
+        this.maxStation = 9;
     }
+
+    public Radio(int stationCount) {    // Конструктор принимающий на вход количество радиостанций
+        this.maxStation = stationCount - 1;
+    }
+
 
     // Метод для переключения на следующую станцию
 
     public void next() {
-        if (currentRadioStationNumber == 9) {
-            currentRadioStationNumber = 0;    // Если текущая станция 9, переключаем на 0
+        if (currentStation == maxStation) {   // Если номер станции больше или равен 0 то переключаем на следующую
+            currentStation = 0;
         } else {
-            currentRadioStationNumber++;     // Иначе просто увеличиваем номер станции;
+            currentStation++;
         }
     }
-
 
 // Метод для переключения на предыдущую станцию
 
     public void prev() {
-        if (currentRadioStationNumber == 0) {
-            currentRadioStationNumber = 9;     // Если текущая станция 0, переключаем на 9
+        if (currentStation == 0) {
+            currentStation = maxStation;     // Если текущая станция 0, то переключаем на количество станций
         } else {
-            currentRadioStationNumber--;      // Иначе просто уменьшаем номер станции
+            currentStation--;      // Иначе просто уменьшаем номер станции
         }
     }
 
-// Метод сеттер для установки номера радиостанции с проверкой
+    // Метод сеттер для установки номера радиостанции с проверкой
 
-    public void setCurrentRadioStationNumber(int station) {
-        if (station >= 0 && station <= 9) {
-            this.currentRadioStationNumber = station; // Устанавливаем номер станции, если он допустим
-        } else {
-            System.out.println("Номер радиостанции должен быть в диапазоне от 0 до 9.");
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
+            return;
         }
+        if (currentStation > maxStation) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
-    public void setSoundVolume(int volume) {
-        if (volume >= 0 && volume <= 100) {
-            this.soundVolume = volume; // Устанавливаем уровень громкости если он допустим
-        } else {
-            System.out.println("Уровень громкости должен быть в диапазоне от 0 до 100.");
+    public void setSoundVolume(int soundVolume) {
+        if (soundVolume < 0) {
+            return;
         }
+        if (soundVolume > 100) {
+            return;
+        }
+        this.soundVolume = soundVolume;
     }
 
 
@@ -62,18 +71,22 @@ public class Radio {
 
     public void decreaseVolume() {
         if (soundVolume > 0) {
-            soundVolume--; // Уменьшаем громкость если она больше одного
+            soundVolume--; // Уменьшаем громкость если она больше нуля
         }
     }
 
 // Геттеры для полученя текущих значений
 
-    public int getCurrentRadioStationNumber() {
-        return currentRadioStationNumber;
+    public int getCurrentRadio() {
+        return currentStation;
     }
 
     public int getSoundVolume() {
         return soundVolume;
+    }
+
+    public int getMaxStation() {
+        return maxStation;
     }
 }
 
